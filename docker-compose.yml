@@ -1,51 +1,35 @@
-version: '3.8'
+version: '3.5'
 
 services:
   postgres:
-    image: postgres:15
-    container_name: order_management_db
+    image: postgres:latest
     environment:
-      POSTGRES_DB: order_management
-      POSTGRES_USER: order_management_user
-      POSTGRES_PASSWORD: order_management_pass
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
     ports:
       - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
     networks:
-      - app-network
+      - postgres
+    restart: unless-stopped
 
-  api:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: order_management_api
+  pgadmin:
+    image: dpage/pgadmin4
     environment:
-      - ConnectionStrings__DefaultConnection=Host=postgres;Database=order_management;Username=order_management_user;Password=order_management_pass
+      PGADMIN_DEFAULT_EMAIL: fbarreto.dev@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: root
     ports:
-      - "5000:5000"
+      - "8081:80"
     depends_on:
       - postgres
     networks:
-      - app-network
-
-  client:
-    build:
-      context: ./client
-      dockerfile: Dockerfile
-    container_name: order_management_client
-    environment:
-      - NEXT_PUBLIC_API_URL=http://localhost:5000
-    ports:
-      - "3000:3000"
-    depends_on:
-      - api
-    networks:
-      - app-network
-
-volumes:
-  postgres_data:
+      - postgres
 
 networks:
-  app-network:
+  postgres:
     driver: bridge
+
+volumes:
+    postgres:
