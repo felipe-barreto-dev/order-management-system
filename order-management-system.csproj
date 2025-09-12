@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>order_management_system</RootNamespace>
+    <IsTestProject>false</IsTestProject>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,5 +17,11 @@
     </PackageReference>
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="OrderManagement.Tests/**/*.cs" />
+    <None Remove="OrderManagement.Tests/**/*" />
+  </ItemGroup>
+
 
 </Project>
