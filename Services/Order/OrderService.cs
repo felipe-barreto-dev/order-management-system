@@ -1,48 +1,35 @@
-using Microsoft.EntityFrameworkCore;
-using OrderManagementSystem.Data;
 using OrderManagementSystem.Enums;
 using OrderManagementSystem.Models;
+using OrderManagementSystem.Repositories.Order;
 
 namespace OrderManagementSystem.Services;
 
-public class OrderService(ApplicationDbContext context) : IOrderService
+public class OrderService(IOrderRepository orderRepository) : IOrderService
 {
-  private readonly ApplicationDbContext _context = context;
+  private readonly IOrderRepository _orderRepository = orderRepository;
 
   public async Task<List<OrderModel>> GetAllOrdersAsync()
   {
-    return await _context.Orders.ToListAsync();
+    return await _orderRepository.GetAllOrdersAsync();
   }
 
   public async Task<OrderModel?> GetOrderByIdAsync(Guid id)
   {
-    return await _context.Orders.FindAsync(id);
+    return await _orderRepository.GetOrderByIdAsync(id);
   }
 
   public async Task<OrderModel> CreateOrderAsync(OrderModel order)
   {
-    _context.Orders.Add(order);
-    await _context.SaveChangesAsync();
-    return order;
+    return await _orderRepository.CreateOrderAsync(order);
   }
 
   public async Task<bool> UpdateOrderStatusAsync(Guid id, OrderStatusEnum status)
   {
-    var order = await _context.Orders.FindAsync(id);
-    if (order == null) return false;
-
-    order.Status = status;
-    await _context.SaveChangesAsync();
-    return true;
+    return await _orderRepository.UpdateOrderStatusAsync(id, status);
   }
 
   public async Task<bool> DeleteOrderAsync(Guid id)
   {
-    var order = await _context.Orders.FindAsync(id);
-    if (order == null) return false;
-
-    _context.Orders.Remove(order);
-    await _context.SaveChangesAsync();
-    return true;
+    return await _orderRepository.DeleteOrderAsync(id);
   }
 }
