@@ -1,26 +1,30 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using order_management_system.Enums;
 
-public class Order
+namespace order_management_system.Models;
+
+[Table("Orders")]
+public class OrderModel
 {
   [Key]
   public Guid Id { get; set; } = Guid.NewGuid();
 
   [Required]
   [StringLength(100)]
-  public string Cliente { get; set; } = string.Empty;
+  public string Client { get; set; } = string.Empty;
 
   [Required]
   [StringLength(100)]
-  public string Produto { get; set; } = string.Empty;
+  public string Product { get; set; } = string.Empty;
 
   [Required]
   [Range(0.01, double.MaxValue)]
-  public decimal Valor { get; set; }
+  public decimal Value { get; set; }
 
   [Required]
   [StringLength(20)]
   public OrderStatusEnum Status { get; set; } = OrderStatusEnum.Pendente;
 
-  public DateTime DataCriacao { get; set; } = DateTime.UtcNow;
+  public DateTime CreationDate { get; set; } = DateTime.UtcNow;
 }

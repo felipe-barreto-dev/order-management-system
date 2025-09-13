@@ -1,8 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using order_management_system.Models;
 
 public class ApplicationDbContext : DbContext
 {
   public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
-  public DbSet<Order> Orders { get; set; }
+  public DbSet<OrderModel> Orders { get; set; }
 }

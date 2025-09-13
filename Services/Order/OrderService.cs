@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using order_management_system.Enums;
+using order_management_system.Models;
 
 namespace order_management_system.Services;
 
@@ -12,17 +13,17 @@ public class OrderService
     _context = context;
   }
 
-  public async Task<List<Order>> GetAllOrdersAsync()
+  public async Task<List<OrderModel>> GetAllOrdersAsync()
   {
     return await _context.Orders.ToListAsync();
   }
 
-  public async Task<Order?> GetOrderByIdAsync(Guid id)
+  public async Task<OrderModel?> GetOrderByIdAsync(Guid id)
   {
     return await _context.Orders.FindAsync(id);
   }
 
-  public async Task<Order> CreateOrderAsync(Order order)
+  public async Task<OrderModel> CreateOrderAsync(OrderModel order)
   {
     _context.Orders.Add(order);
     await _context.SaveChangesAsync();
