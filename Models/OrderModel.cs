@@ -12,7 +12,7 @@ public class OrderModel
 
   [Required]
   [StringLength(100)]
-  public string Client { get; set; } = string.Empty;
+  public string Costumer { get; set; } = string.Empty;
 
   [Required]
   [StringLength(100)]
@@ -26,5 +26,5 @@ public class OrderModel
   [StringLength(20)]
   public OrderStatusEnum Status { get; set; } = OrderStatusEnum.Pendente;
 
-  public DateTime CreationDate { get; set; } = DateTime.UtcNow;
+  public DateTime OrderDate { get; set; } = DateTime.UtcNow;
 }
