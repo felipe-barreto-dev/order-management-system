@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace order_management_system.Migrations
+namespace OrderManagementSystem.Migrations
 {
     /// <inheritdoc />
     public partial class CreateOrderTable : Migration

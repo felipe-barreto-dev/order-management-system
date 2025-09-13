@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using OrderManagementSystem.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

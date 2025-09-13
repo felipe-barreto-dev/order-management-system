@@ -1,6 +1,6 @@
 using FluentAssertions;
-using order_management_system.Enums;
-using order_management_system.Models;
+using OrderManagementSystem.Enums;
+using OrderManagementSystem.Models;
 
 namespace OrderManagement.Tests.Models;
 

@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace order_management_system.Migrations
+namespace OrderManagementSystem.Migrations
 {
     /// <inheritdoc />
     public partial class UpdateOrdersColumnsNames : Migration

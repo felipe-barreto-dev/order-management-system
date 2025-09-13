@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using order_management_system.Models;
+using OrderManagementSystem.Models;
+
+namespace OrderManagementSystem.Data;
 
 public class ApplicationDbContext : DbContext
 {

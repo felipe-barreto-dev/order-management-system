@@ -1,5 +1,5 @@
 
-namespace order_management_system.Enums
+namespace OrderManagementSystem.Enums
 {
   public enum OrderStatusEnum
   {

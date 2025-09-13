@@ -1,8 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using order_management_system.Enums;
-using order_management_system.Models;
+using OrderManagementSystem.Data;
+using OrderManagementSystem.Enums;
+using OrderManagementSystem.Models;
 
-namespace order_management_system.Services;
+namespace OrderManagementSystem.Services;
 
 public class OrderService
 {

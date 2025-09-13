@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using order_management_system.Enums;
+using OrderManagementSystem.Enums;
 
-namespace order_management_system.Models;
+namespace OrderManagementSystem.Models;
 
 [Table("Orders")]
 public class OrderModel
