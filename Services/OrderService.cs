@@ -25,6 +25,13 @@ public class OrderService(IUnitOfWork unitOfWork) : IOrderService
 
         return createdOrder;
     }
+    public async Task<OrderModel> UpdateOrderAsync(OrderModel order)
+    {
+        var updatedOrder = await _unitOfWork.Orders.UpdateAsync(order);
+        await _unitOfWork.SaveChangesAsync();
+
+        return updatedOrder;
+    }
 
     public async Task<bool> UpdateOrderStatusAsync(Guid id, OrderStatusEnum status)
     {
