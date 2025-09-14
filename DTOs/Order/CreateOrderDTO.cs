@@ -17,8 +17,6 @@ public class CreateOrderDTO
     [Range(0.01, double.MaxValue, ErrorMessage = "Value must be greater than 0")]
     public required decimal Value { get; set; }
 
-    // OrderDate e Status não devem ser obrigatórios na criação
-    // Eles são definidos automaticamente pelo sistema
     public DateTime? OrderDate { get; set; }
     public OrderStatusEnum? Status { get; set; }
 }
