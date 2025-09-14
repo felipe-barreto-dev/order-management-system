@@ -4,7 +4,7 @@ using OrderManagementSystem.Models;
 
 namespace OrderManagement.Tests.Models;
 
-public class OrderTests
+public class OrderModelTests
 {
     [Fact]
     public void Order_ShouldHaveDefaultValues_WhenCreated()
